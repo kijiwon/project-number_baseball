@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 function App() {
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
-    const candidate = [1,2,3,4,5,6,7,8,9];
+    const numbers = [1,2,3,4,5,6,7,8,9];
     const array = [];
     for (let i = 0; i < 4; i += 1) {
-      const chosen = candidate.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+      const chosen = numbers.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
       array.push(chosen);
     }
     return array;
@@ -32,10 +32,9 @@ function App() {
       <div className={className}>
       <button className='btn' onClick={()=>{
         setStartGame(startGame=>!startGame);
-        getNumbers();}
-        }>Play</button>
+      }}>Play</button>
       </div>
-      <StartGame/>
+      <StartGame setState = {setState}/>
     </div>
   );
 }

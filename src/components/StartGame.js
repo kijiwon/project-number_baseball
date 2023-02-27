@@ -1,9 +1,10 @@
 import React from "react";
-
+import './GamePage.css'
 function StartGame (){
     return(
-        <div>
-            게임을 시작하지
+        <div className="game-page">
+            <input type='text'/>
+            <button>입력</button>
         </div>
     )
 };
