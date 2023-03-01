@@ -20,6 +20,52 @@ function App() {
   };
   const [state, setState]= useState(initialState);
   console.log(state.answer);
+  // 입력된 값
+  const [inputValue, setInputValue] = useState('');
+
+  // 입력 버튼 클릭시 입력값과 정답 비교
+  const onSumbit = (e)=>{
+    e.preventDefault();
+    if(inputValue.target.value===state.answer.join('')){
+      setState({
+        result: '홈런',
+        value: inputValue.target.value,
+        answer: state.answer,
+        tries: [...state.tries, {try: inputValue.target.value, result: '홈런'}]
+      })
+      console.log(state)
+    } else {
+      // strike와 ball 확인하기
+      const answerArray = inputValue.target.value.split('').map((el)=>parseInt(el));
+      let strike = 0;
+      let ball = 0;
+      for(let i=0; i<4; i++){
+        if(answerArray[i]===state.answer[i]){
+          strike +=1;
+        } else if(state.answer.includes(answerArray[i])){
+          ball +=1;
+        }
+      }
+      setState({
+        result: `${strike}Strike ${ball}Ball`,
+        value: inputValue.target.value,
+        answer: state.answer,
+        tries: [...state.tries, {try: inputValue.target.value, result: `${strike}Strike ${ball}Ball`}]
+      })
+      // 기회를 다 썼을때
+      if(state.tries.length>=10){
+        setState({
+          result: `아웃!! 정답은 ${state.answer.join('')}였습니다.`,
+          value: inputValue.target.value,
+          answer: state.answer,
+          tries: [...state.tries, {try: inputValue.target.value, result: `아웃!! 정답은 ${state.answer.join('')}였습니다.`}]
+        })
+        console.log(state.result)
+      } 
+      console.log(state.result)
+    }
+    console.log(state.tries)
+  }
   //play 버튼 클릭시 화면 바꾸기
   const [className,setClassName]=useState('show-main');
   const [startGame, setStartGame] = useState(false);
@@ -34,7 +80,7 @@ function App() {
         setStartGame(startGame=>!startGame);
       }}>Play</button>
       </div>
-      <StartGame setState = {setState}/>
+      <StartGame state={state} setState = {setState} setInputValue={setInputValue} onSumbit={onSumbit}/>
     </div>
   );
 }
