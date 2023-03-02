@@ -60,11 +60,17 @@ function App() {
           answer: state.answer,
           tries: [...state.tries, {try: inputValue.target.value, result: `아웃!! 정답은 ${state.answer.join('')}였습니다.`}]
         })
-        console.log(state.result)
       } 
       console.log(state.result)
     }
     console.log(state.tries)
+  }
+  // retry버튼
+  const btnRetry = ()=>{
+    setState({
+      answer: new getNumbers(),
+    });
+    console.log(state.answer)
   }
   //play 버튼 클릭시 화면 바꾸기
   const [className,setClassName]=useState('show-main');
@@ -80,7 +86,7 @@ function App() {
         setStartGame(startGame=>!startGame);
       }}>Play</button>
       </div>
-      <StartGame state={state} setState = {setState} setInputValue={setInputValue} onSumbit={onSumbit}/>
+      <StartGame state={state} setState = {setState} setInputValue={setInputValue} onSumbit={onSumbit} btnRetry={btnRetry}/>
     </div>
   );
 }

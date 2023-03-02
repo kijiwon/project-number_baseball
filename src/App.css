@@ -1,9 +1,8 @@
-/* body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 100px;
-} */
+body{
+  width: 100vw;
+  height: 100vh;
+
+}
 .show-main{
   position: absolute;
   width: 100vw;
