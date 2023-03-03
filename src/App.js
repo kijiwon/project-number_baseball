@@ -33,7 +33,7 @@ function App() {
         answer: state.answer,
         tries: [...state.tries, {try: inputValue.target.value, result: '홈런'}]
       })
-      console.log(state)
+      // console.log(state)
     } else {
       // strike와 ball 확인하기
       const answerArray = inputValue.target.value.split('').map((el)=>parseInt(el));
@@ -61,17 +61,28 @@ function App() {
           tries: [...state.tries, {try: inputValue.target.value, result: `아웃!! 정답은 ${state.answer.join('')}였습니다.`}]
         })
       } 
-      console.log(state.result)
+      // console.log(state.result)
     }
-    console.log(state.tries)
+    console.log(state.tries, state.value)
   }
   // retry버튼
   const btnRetry = ()=>{
     setState({
       answer: new getNumbers(),
     });
-    console.log(state.answer)
+    // console.log(state.answer)
   }
+  // useEffect로 state 밀림현상 해결
+  useEffect(()=>{
+    if(state.value===undefined){
+      setState({
+        result: '',
+        value: inputValue.target.value,
+        answer: getNumbers(),
+        tries: [],
+      })
+    }
+  },[state])
   //play 버튼 클릭시 화면 바꾸기
   const [className,setClassName]=useState('show-main');
   const [startGame, setStartGame] = useState(false);

@@ -17,3 +17,11 @@
     padding-top: 20px;
     background-color: #ffff;
 }
+.none{
+    width: inherit;
+    height: 30px;
+}
+.game-result{
+    width: inherit;
+    height: 30px;
+}
