@@ -1,22 +1,21 @@
 import React from "react";
 import './GamePage.css'
-import Tries from "./Tries";
-function StartGame ({state, setInputValue, onSumbit, btnRetry}){
+function StartGame ({result, tries, inputValue, onChange, onSumbit, btnRetry}){
     return(
         <div className="game-page">
             <div className="game-box">
                 <div className="show-result">
-                    {state.result !==''? <p className="game-result">{state.result}</p> : <div className="none"></div>}
+                    {result !==''? <p className="game-result">{result}</p> : <div className="none"></div>}
                 </div>
                 <div className="input-value">
-                    <input type='text' onChange={setInputValue} />
+                    <input type='text' onChange={onChange} value={inputValue}/>
                     <button onClick={onSumbit}>입력</button>
-                    {state.result==='홈런'? <button onClick={btnRetry}>재시도</button>: <div></div>}
+                    {result==='홈런!!' || tries.length===10? <button onClick={btnRetry}>재시도</button>: <div></div>}
                 </div>
                 <ul>
-                    {state.tries.map((el,i)=>{
-                        return <Tries key={`${i+1}`} tryNum={el}/>
-                    })}
+                    {tries.length!==0 ? tries.map((el,i)=>{
+                        return <li key={i}>{i+1}번째 시도 {el.try} : {el.result}</li>
+                    }) : <div></div>}
                 </ul>
             </div>
         </div>
