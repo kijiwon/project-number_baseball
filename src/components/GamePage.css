@@ -1,27 +1,24 @@
 .game-page{
-    /* height: 100vh; */
-    padding-top: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: black; */
 }
 .game-box{
-    width: 500px;
-    height: 400px;
-    /* border: 2px solid black; */
+    width: 700px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding-top: 20px;
-    background-color: #ffff;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('./야구장\ 배경2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
-.none{
+/* .none{
     width: inherit;
     height: 30px;
-}
-.game-result{
+} */
+/* .game-result{
     width: inherit;
     height: 30px;
-}
+} */

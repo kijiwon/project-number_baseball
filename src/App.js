@@ -1,6 +1,8 @@
 import './App.css';
 import StartGame from './components/StartGame';
 import { useEffect, useState } from 'react';
+import {IoGameController} from 'react-icons/io5'
+import {IoBaseballOutline} from 'react-icons/io5'
 function App() {
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
@@ -72,14 +74,35 @@ function App() {
 
   return (
     <div className="App">
-      <div className={className}>
-      <button className='btn' onClick={()=>{
-        setStartGame(startGame=>!startGame);
-      }}>Play</button>
+      <header>
+        <IoGameController className='game-icon'/>
+        <h1>wiz land</h1>
+      </header>
+      <div className='game-page'>
+        <aside>
+          <p className='lank'>랭킹</p>
+          <ul>
+            <li>기지원 5회</li>
+          </ul>
+        </aside>
+        <main>
+          <h2> <IoBaseballOutline className='title-icon'/>숫자 야구</h2>
+          <div className='game'>
+            <div className={className}>
+              <button className='btn' onClick={()=>{
+                setStartGame(startGame=>!startGame);
+              }}>Play</button>
+            </div>
+            <StartGame result={result} tries={tries} inputValue={inputValue} onChange={onChange} onSumbit={onSumbit} btnRetry={btnRetry}/>            
+          </div>
+        </main>        
       </div>
-      <StartGame result={result} tries={tries} inputValue={inputValue} onChange={onChange} onSumbit={onSumbit} btnRetry={btnRetry}/>
+
     </div>
   );
 }
 
 export default App;
+{/* <a href="https://kr.freepik.com/free-photo/baseball-players-at-professional-baseball-stadium-in-evening-during-a-game_29155877.htm#query=%EC%95%BC%EA%B5%AC%EC%9E%A5&position=4&from_view=search&track=robertav1">작가 viarprodesign</a> 출처 Freepik */}
+// 사진: <a href="https://unsplash.com/ko/%EC%82%AC%EC%A7%84/oZHceo-i8LQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>의<a href="https://unsplash.com/@larrymjackii?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Larry Jack</a>
+  
