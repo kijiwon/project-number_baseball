@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Do Hyeon', sans-serif;
 }
 li{
   list-style: none;
@@ -19,7 +20,9 @@ header{
   justify-content: flex-start;
   align-items: center;
   padding-left: 30px;
-  border-bottom: 0.5px solid black;
+  border-bottom: 2px solid #F9F7F7;
+  color: #DBE2EF;
+  background-color: rgb(12, 25, 41);
 }
 .game-icon{
   width: 50px;
@@ -37,24 +40,41 @@ h1{
   justify-content: start;
   align-items: start;
   padding: 20px 0 0 30px;
+  background-color: #19212d;
   margin: 0;
 }
 aside{
   width: 200px;
   height: 300px;
-  border: 1px solid gray;
+  border: 3px solid #F9F7F7;
+  background-color: #539165;
+  border-radius: 20px;
   padding: 10px 0 0 20px;
   margin-right: 50px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 30px;
+
 }
 .lank{
   font-size: 20px;
   font-weight: 700;
   text-align: center;
   margin-bottom: 10px;
+  color: white;
+}
+main{
+  width: 100vw;
+  height: 100vh;
+  padding-top: 10px;
+  border-left: 2px solid #F9F7F7;
 }
 h2{
   font-size: 20px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #F9F7F7;
 }
 .title-icon{
   width: 20px;
@@ -63,12 +83,14 @@ h2{
 }
 .show-main{
   position: absolute;
-  width: 700px;
+  width: 800px;
   height: 500px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  /* margin-top: 20px; */
+  margin-left: 30px;
 }
 .btn{
   width: 180px;
@@ -83,5 +105,5 @@ h2{
   width: 800px;
   display: flex;
   flex-direction: row;
-
+  margin-top: 5px;
 }

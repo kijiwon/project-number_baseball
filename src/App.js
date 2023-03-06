@@ -26,8 +26,11 @@ function App() {
       setResult('홈런!!');
       setValue(inputValue);
     } else{
-      if(tries.length>=10){
-        setResult(`아웃!! 정답은 ${answer.join('')}입니다.`);
+      if(tries.length===9){
+        setResult(
+          `아웃!!
+          정답은 ${answer.join('')}입니다.`
+          );
       } else {
         const answerArray = inputValue.split('').map((el)=>parseInt(el));
         let strike = 0;
@@ -41,7 +44,10 @@ function App() {
         }
         setResult(`${strike}Strike ${ball}Ball`);
         setValue(inputValue);
-        setTries([...tries,{try: inputValue, result: `${strike}Strike ${ball}Ball`}]
+        setTries([...tries,{try: inputValue, result: 
+          `${strike}Strike 
+          ${ball}Ball`
+        }]
         );
       }
       setInputValue('')
