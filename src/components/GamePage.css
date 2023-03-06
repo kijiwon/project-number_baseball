@@ -62,8 +62,8 @@ btn-input{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -250px;
-    margin-left: -254px;
+    margin-top: -260px;
+    margin-left: -250px;
 }
 .retry{
     width: 100px;
@@ -99,6 +99,10 @@ th:first-of-type{
 ul{
     display: flex;
     flex-direction: row;
+}
+li{
+    width: 50px;
+    margin-right: 38px;
 }
 p{
     color: white;
