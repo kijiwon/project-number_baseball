@@ -4,6 +4,11 @@ import { useEffect, useState } from 'react';
 import {IoGameController} from 'react-icons/io5'
 import {IoBaseballOutline} from 'react-icons/io5'
 function App() {
+  const gameResult = JSON.parse(localStorage.getItem('gameResult')) || [];
+  const [resultList,setResultList] = useState(gameResult)
+  useEffect(()=>{
+    localStorage.setItem('todoList',JSON.stringify(gameResult));
+  },[resultList])
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
     const numbers = [1,2,3,4,5,6,7,8,9];
@@ -14,7 +19,9 @@ function App() {
     }
     return array;
   }
+
   // 게임에서 사용할 상태
+  const [userName, setUserName] = useState('');
   const [result,setResult] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState('');
@@ -26,7 +33,7 @@ function App() {
       setResult('홈런!!');
       setValue(inputValue);
     } else{
-      if(tries.length===9){
+      if(tries.length===8){
         setResult(
           `아웃!!
           정답은 ${answer.join('')}입니다.`
@@ -95,8 +102,10 @@ function App() {
           <h2> <IoBaseballOutline className='title-icon'/>숫자 야구</h2>
           <div className='game'>
             <div className={className}>
+              <input value={userName} onChange={setUserName} placeholder='이름을 입력해 주세요.'/>
               <button className='btn' onClick={()=>{
                 setStartGame(startGame=>!startGame);
+                
               }}>Play</button>
             </div>
             <StartGame result={result} tries={tries} inputValue={inputValue} onChange={onChange} onSumbit={onSumbit} btnRetry={btnRetry}/>            
