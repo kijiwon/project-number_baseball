@@ -7,8 +7,9 @@ function App() {
   const gameResult = JSON.parse(localStorage.getItem('gameResult')) || [];
   const [resultList,setResultList] = useState(gameResult)
   useEffect(()=>{
-    localStorage.setItem('todoList',JSON.stringify(gameResult));
-  },[resultList])
+    localStorage.setItem('gameResult',JSON.stringify(gameResult));
+  },[gameResult])
+  console.log(localStorage)
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
     const numbers = [1,2,3,4,5,6,7,8,9];
@@ -21,6 +22,12 @@ function App() {
   }
 
   // 게임에서 사용할 상태
+  //play 버튼 클릭시 화면 바꾸기
+  const [className,setClassName]=useState('show-main');
+  const [startGame, setStartGame] = useState(false);
+  useEffect(() => {
+    setClassName(`${startGame ? "show-game" : "show-main"}`);
+  }, [startGame]);
   const [userName, setUserName] = useState('');
   const [result,setResult] = useState('');
   const [inputValue, setInputValue] = useState('');
@@ -28,10 +35,22 @@ function App() {
   const [answer,setAnswer] = useState(getNumbers());
   const [tries, setTries] = useState([]);
   
+  // 유저네임 입력
+  const inputUser = (e)=>{
+    setUserName(e.target.value);
+  }
+  const addUser = ()=>{
+    setResultList({
+      userName : userName
+    });
+  }
   const onSumbit = (e)=>{
     if(answer.join('')===inputValue){
       setResult('홈런!!');
       setValue(inputValue);
+      setResultList({
+        try : tries.length+1
+      });
     } else{
       if(tries.length===8){
         setResult(
@@ -62,7 +81,7 @@ function App() {
   }
   console.log(tries.length);
   console.log(answer);
-
+  console.log(resultList);
   // retry버튼
   const btnRetry = ()=>{
     setResult('');
@@ -70,6 +89,7 @@ function App() {
     setValue('');
     setTries([]);
     setInputValue('');
+    setStartGame(false);
     // console.log(state.answer)
   }
   // input창 초기화
@@ -78,12 +98,6 @@ function App() {
     console.log(inputValue);
 }
   
-  //play 버튼 클릭시 화면 바꾸기
-  const [className,setClassName]=useState('show-main');
-  const [startGame, setStartGame] = useState(false);
-  useEffect(() => {
-    setClassName(`${startGame ? "show-game" : "show-main"}`);
-  }, [startGame]);
 
   return (
     <div className="App">
@@ -102,10 +116,10 @@ function App() {
           <h2> <IoBaseballOutline className='title-icon'/>숫자 야구</h2>
           <div className='game'>
             <div className={className}>
-              <input value={userName} onChange={setUserName} placeholder='이름을 입력해 주세요.'/>
+              <input value={userName} onChange={inputUser} placeholder='이름을 입력해 주세요.'/>
               <button className='btn' onClick={()=>{
+                addUser();
                 setStartGame(startGame=>!startGame);
-                
               }}>Play</button>
             </div>
             <StartGame result={result} tries={tries} inputValue={inputValue} onChange={onChange} onSumbit={onSumbit} btnRetry={btnRetry}/>            
