@@ -1,5 +1,6 @@
 import './App.css';
 import StartGame from './components/StartGame';
+import Lank from './components/Lank';
 import { useEffect, useState } from 'react';
 import {IoGameController} from 'react-icons/io5'
 import {IoBaseballOutline} from 'react-icons/io5'
@@ -8,8 +9,7 @@ function App() {
   const [resultList,setResultList] = useState(gameResult)
   useEffect(()=>{
     localStorage.setItem('gameResult',JSON.stringify(gameResult));
-  },[gameResult])
-  console.log(localStorage)
+  },[resultList])
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
     const numbers = [1,2,3,4,5,6,7,8,9];
@@ -39,16 +39,12 @@ function App() {
   const inputUser = (e)=>{
     setUserName(e.target.value);
   }
-  const addUser = ()=>{
-    setResultList({
-      userName : userName
-    });
-  }
   const onSumbit = (e)=>{
     if(answer.join('')===inputValue){
       setResult('홈런!!');
       setValue(inputValue);
       setResultList({
+        userName: userName,
         try : tries.length+1
       });
     } else{
@@ -82,6 +78,7 @@ function App() {
   console.log(tries.length);
   console.log(answer);
   console.log(resultList);
+  console.log(localStorage.gameResult)
   // retry버튼
   const btnRetry = ()=>{
     setResult('');
@@ -90,6 +87,7 @@ function App() {
     setTries([]);
     setInputValue('');
     setStartGame(false);
+    setUserName('');
     // console.log(state.answer)
   }
   // input창 초기화
@@ -108,9 +106,7 @@ function App() {
       <div className='game-page'>
         <aside>
           <p className='lank'>랭킹</p>
-          <ul>
-            <li>기지원 5회</li>
-          </ul>
+          <Lank resultList={resultList}/>
         </aside>
         <main>
           <h2> <IoBaseballOutline className='title-icon'/>숫자 야구</h2>
@@ -118,7 +114,6 @@ function App() {
             <div className={className}>
               <input value={userName} onChange={inputUser} placeholder='이름을 입력해 주세요.'/>
               <button className='btn' onClick={()=>{
-                addUser();
                 setStartGame(startGame=>!startGame);
               }}>Play</button>
             </div>
