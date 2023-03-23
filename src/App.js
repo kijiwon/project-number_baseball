@@ -5,11 +5,16 @@ import { useEffect, useState } from 'react';
 import {IoGameController} from 'react-icons/io5'
 import {IoBaseballOutline} from 'react-icons/io5'
 function App() {
-  const gameResult = JSON.parse(localStorage.getItem('gameResult')) || [];
-  const [resultList,setResultList] = useState(gameResult)
-  useEffect(()=>{
-    localStorage.setItem('gameResult',JSON.stringify(gameResult));
-  },[resultList])
+  const gameResult = JSON.parse(localStorage.getItem('gameResult'));
+  // const [resultList,setResultList] = useState(gameResult);
+  // useEffect(()=>{
+  //   localStorage.setItem('gameResult',JSON.stringify(gameResult));
+  // },[gameResult,resultList])
+  const [resultList, setResultList] = useState(gameResult || []);
+
+useEffect(() => {
+  localStorage.setItem('gameResult', JSON.stringify(resultList));
+}, [resultList]);
   // 랜덤한 4자리 숫자 뽑기
   function getNumbers() {
     const numbers = [1,2,3,4,5,6,7,8,9];
