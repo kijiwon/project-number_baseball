@@ -2,9 +2,10 @@ import StartGame from './pages/StartGame';
 import Game from './pages/Game';
 import styled from 'styled-components';
 import { SIZE, COLOR } from '../src/style/theme';
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import GameOver from './components/GameOver';
 const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
   min-width: ${SIZE.mobileMin};
@@ -68,6 +69,8 @@ const CloseButton = styled.button`
   }
 `;
 
+export const ResultContext = React.createContext();
+
 const GameRule = ({ state, setState }) => {
   return (
     <Rule>
@@ -89,18 +92,33 @@ const GameRule = ({ state, setState }) => {
 
 function App() {
   const [openRule, setOpenRule] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [result, setResult] = useState([]);
 
+  const handleGameRule = useCallback(() => setOpenRule(!openRule));
   return (
-    <BrowserRouter>
-      <AppWrapper>
-        <Header state={openRule} setState={setOpenRule} />
-        {openRule && <GameRule state={openRule} setState={setOpenRule} />}
-        <Routes>
-          <Route path="/" element={<StartGame />} />
-          <Route path="/game" element={<Game />} />
-        </Routes>
-      </AppWrapper>
-    </BrowserRouter>
+    <ResultContext.Provider value={result}>
+      <BrowserRouter>
+        <AppWrapper>
+          <Header state={openRule} setState={setOpenRule} />
+          {openRule && <GameRule handleGameRule={handleGameRule} />}
+          {gameOver && (
+            <GameOver
+              gameOver={gameOver}
+              setGameOver={setGameOver}
+              result={result}
+            />
+          )}
+          <Routes>
+            <Route path="/" element={<StartGame />} />
+            <Route
+              path="/game"
+              element={<Game result={result} setResult={setResult} />}
+            />
+          </Routes>
+        </AppWrapper>
+      </BrowserRouter>
+    </ResultContext.Provider>
   );
 }
 

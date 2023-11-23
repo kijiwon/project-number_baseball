@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
+import React from 'react';
 
 const HeaderWrapper = styled.header`
   width: 80%;
@@ -14,15 +15,12 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Header = ({ state, setState }) => {
+const Header = ({ handleGameRule }) => {
   return (
     <HeaderWrapper>
-      <BsFillQuestionCircleFill
-        className="rule"
-        onClick={() => setState(!state)}
-      />
+      <BsFillQuestionCircleFill className="rule" onClick={handleGameRule} />
     </HeaderWrapper>
   );
 };
 
-export default Header;
+export default React.memo(Header);

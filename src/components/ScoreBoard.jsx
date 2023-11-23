@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useContext } from 'react';
 import { COLOR } from '../style/theme';
+import { ResultContext } from '../App';
 
 const ScoreWrapper = styled.div`
   width: 70%;
@@ -51,9 +52,9 @@ const Score = styled.div`
   }
 `;
 
-const ScoreBoard = ({ result }) => {
+const ScoreBoard = () => {
   const cnt = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+  const result = useContext(ResultContext);
   console.log(result);
   return (
     <ScoreWrapper>

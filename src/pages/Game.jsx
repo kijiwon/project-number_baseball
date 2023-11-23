@@ -66,10 +66,9 @@ const getRandomNumbers = () => {
   return numberArray;
 };
 
-const Game = () => {
+const Game = ({ result, setResult }) => {
   const [randomNum, setRandomNum] = useState(getRandomNumbers());
   const [answer, setAnswer] = useState('');
-  const [result, setResult] = useState([]);
 
   const inputRef = useRef();
 
@@ -106,6 +105,7 @@ const Game = () => {
         },
       ]);
     }
+
     setAnswer('');
   };
 
@@ -127,7 +127,7 @@ const Game = () => {
         />
         <SubmitButton onClick={handleSubmit}>던지기</SubmitButton>
       </InputWrapper>
-      <ScoreBoard result={result} />
+      <ScoreBoard />
     </>
   );
 };
