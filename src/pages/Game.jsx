@@ -9,6 +9,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: end;
+  margin-top: 100px;
 
   .retry {
     font-size: 20px;

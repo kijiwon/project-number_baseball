@@ -8,7 +8,7 @@ const LogoWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  padding-top: 100px;
   img {
     width: 80%;
   }
