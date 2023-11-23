@@ -8,6 +8,10 @@ const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
   min-width: ${SIZE.mobileMin};
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 function App() {

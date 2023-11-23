@@ -10,8 +10,7 @@ const LogoWrapper = styled.div`
   align-items: center;
 
   img {
-    width: 30%;
-    margin-top: 40px;
+    width: 80%;
   }
 `;
 
