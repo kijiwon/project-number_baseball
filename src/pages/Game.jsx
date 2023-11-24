@@ -1,6 +1,6 @@
 import { useState, useRef, useContext } from 'react';
 import styled from 'styled-components';
-import { COLOR } from '../style/theme';
+import { COLOR, SIZE } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
 import { GameOverContext, ResultContext, RandomNumberContext } from '../App';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
@@ -23,9 +23,24 @@ const InputWrapper = styled.div`
       background-color: ${COLOR.hover_yellow};
     }
   }
+  @media (max-width: ${SIZE.mobileMax}) {
+    width: 90%;
+    .retry {
+      font-size: 20px;
+      font-weight: 700;
+      padding: 5px;
+      margin-right: 10px;
+    }
+  }
 `;
 
 const InputNumber = styled.input`
+  @media (max-width: ${SIZE.mobileMax}) {
+    width: 140px;
+    font-size: 22px;
+    padding-left: 10px;
+    letter-spacing: 20px;
+  }
   width: 220px;
   height: 60px;
 
@@ -40,6 +55,11 @@ const InputNumber = styled.input`
 `;
 
 const SubmitButton = styled.button`
+  @media (max-width: ${SIZE.mobileMax}) {
+    width: 60px;
+    height: 38px;
+    border-radius: 10px;
+  }
   width: 100px;
   height: 50px;
   background-color: ${COLOR.main_yellow};

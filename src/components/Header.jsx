@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
 import React from 'react';
+import { SIZE } from '../style/theme';
 
 const HeaderWrapper = styled.header`
   width: 80%;
@@ -12,6 +13,10 @@ const HeaderWrapper = styled.header`
   .rule {
     font-size: 26px;
     cursor: pointer;
+  }
+  @media (max-width: ${SIZE.mobileMax}) {
+    width: 100%;
+    padding-right: 20px;
   }
 `;
 
