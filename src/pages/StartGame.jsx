@@ -51,7 +51,10 @@ const StartGame = () => {
   const nav = useNavigate();
   return (
     <LogoWrapper>
-      <img src={`./assets/1.png`} alt="초록 로고" />
+      <img
+        src="https://github.com/kijiwon/project-number_baseball/assets/1.png"
+        alt="초록 로고"
+      />
       <StartButton onClick={() => nav('/game')}>Start</StartButton>
     </LogoWrapper>
   );
