@@ -51,7 +51,7 @@ const StartGame = () => {
   const nav = useNavigate();
   return (
     <LogoWrapper>
-      <img src={process.env.PUBLIC_URL + `/assets/1.png`} alt="초록 로고" />
+      <img src={`./assets/1.png`} alt="초록 로고" />
       <StartButton onClick={() => nav('/game')}>Start</StartButton>
     </LogoWrapper>
   );
