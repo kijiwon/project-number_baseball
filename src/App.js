@@ -70,8 +70,10 @@ const CloseButton = styled.button`
 `;
 
 export const ResultContext = React.createContext();
+export const GameOverContext = React.createContext();
+export const RandomNumberContext = React.createContext();
 
-const GameRule = ({ state, setState }) => {
+const GameRule = ({ handleGameRule }) => {
   return (
     <Rule>
       <RuleWrapper>
@@ -84,41 +86,61 @@ const GameRule = ({ state, setState }) => {
           <li>숫자만 맞으면 볼(B) </li>
           <li>숫자가 하나도 맞지 않을 경우 아웃(OUT) </li>
         </RuleList>
-        <CloseButton onClick={() => setState(!state)}>닫기</CloseButton>
+        <CloseButton onClick={handleGameRule}>닫기</CloseButton>
       </RuleWrapper>
     </Rule>
   );
 };
 
+const getRandomNumbers = () => {
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const numberArray = [];
+
+  for (let i = 0; i < 4; i++) {
+    const chosenNum = numbers.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+    numberArray.push(chosenNum);
+  }
+  return numberArray;
+};
+
 function App() {
   const [openRule, setOpenRule] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [randomNum, setRandomNum] = useState(getRandomNumbers());
+
   const [result, setResult] = useState([]);
 
-  const handleGameRule = useCallback(() => setOpenRule(!openRule));
+  const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
+
   return (
-    <ResultContext.Provider value={result}>
-      <BrowserRouter>
-        <AppWrapper>
-          <Header state={openRule} setState={setOpenRule} />
-          {openRule && <GameRule handleGameRule={handleGameRule} />}
-          {gameOver && (
-            <GameOver
-              gameOver={gameOver}
-              setGameOver={setGameOver}
-              result={result}
-            />
-          )}
-          <Routes>
-            <Route path="/" element={<StartGame />} />
-            <Route
-              path="/game"
-              element={<Game result={result} setResult={setResult} />}
-            />
-          </Routes>
-        </AppWrapper>
-      </BrowserRouter>
-    </ResultContext.Provider>
+    <RandomNumberContext.Provider
+      value={{ randomNum, setRandomNum, getRandomNumbers }}
+    >
+      <GameOverContext.Provider value={{ gameOver, setGameOver }}>
+        <ResultContext.Provider value={{ result, setResult }}>
+          <BrowserRouter>
+            <AppWrapper>
+              <Header handleGameRule={handleGameRule} />
+              {openRule && <GameRule handleGameRule={handleGameRule} />}
+              {gameOver && (
+                <GameOver
+                  gameOver={gameOver}
+                  setGameOver={setGameOver}
+                  result={result}
+                />
+              )}
+              <Routes>
+                <Route path="/" element={<StartGame />} />
+                <Route
+                  path="/game"
+                  element={<Game result={result} setResult={setResult} />}
+                />
+              </Routes>
+            </AppWrapper>
+          </BrowserRouter>
+        </ResultContext.Provider>
+      </GameOverContext.Provider>
+    </RandomNumberContext.Provider>
   );
 }
 

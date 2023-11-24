@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from '../style/theme';
 import { useNavigate } from 'react-router-dom';
-// import { SIZE } from '../style/theme';
 
 const LogoWrapper = styled.div`
   display: flex;

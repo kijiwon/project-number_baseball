@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import { COLOR } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
+import { GameOverContext, ResultContext, RandomNumberContext } from '../App';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
 
 const InputWrapper = styled.div`
@@ -10,15 +11,14 @@ const InputWrapper = styled.div`
   justify-content: space-around;
   align-items: end;
   margin-top: 100px;
-
   .retry {
     font-size: 20px;
     border-radius: 25px;
+    cursor: pointer;
     padding: 10px;
 
     background-color: ${COLOR.main_yellow};
     color: ${COLOR.main_green};
-    cursor: pointer;
     &:hover {
       background-color: ${COLOR.hover_yellow};
     }
@@ -55,27 +55,15 @@ const SubmitButton = styled.button`
   }
 `;
 
-const getRandomNumbers = () => {
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const numberArray = [];
-
-  for (let i = 0; i < 4; i++) {
-    const chosenNum = numbers.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
-    numberArray.push(chosenNum);
-  }
-  return numberArray;
-};
-
-const Game = ({ result, setResult }) => {
-  const [randomNum, setRandomNum] = useState(getRandomNumbers());
+const Game = () => {
   const [answer, setAnswer] = useState('');
-
+  const { result, setResult } = useContext(ResultContext);
+  const { gameOver, setGameOver } = useContext(GameOverContext);
+  const { randomNum, setRandomNum, getRandomNumbers } =
+    useContext(RandomNumberContext);
   const inputRef = useRef();
 
-  console.log(randomNum);
-
   const handleSubmit = () => {
-    console.log(answer);
     if (answer.length < 1) {
       inputRef.current.focus();
       return;
@@ -85,6 +73,9 @@ const Game = ({ result, setResult }) => {
         ...result,
         { answer: answer, result: '홈런!!', tries: result.length },
       ]);
+      setAnswer('');
+      setGameOver(!gameOver);
+      return;
     } else {
       let ball = 0;
       let strike = 0;
@@ -107,12 +98,22 @@ const Game = ({ result, setResult }) => {
     }
 
     setAnswer('');
+    if (result.length > 7) {
+      setGameOver(!gameOver);
+      return;
+    }
   };
 
   const handleRetry = () => {
     setRandomNum(getRandomNumbers());
     setAnswer('');
     setResult([]);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
   };
 
   return (
@@ -124,6 +125,7 @@ const Game = ({ result, setResult }) => {
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
+          onKeyDown={(e) => handleKeyPress(e)}
         />
         <SubmitButton onClick={handleSubmit}>던지기</SubmitButton>
       </InputWrapper>
