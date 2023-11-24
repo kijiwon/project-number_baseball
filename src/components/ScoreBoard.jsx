@@ -55,7 +55,7 @@ const Score = styled.div`
 const ScoreBoard = () => {
   const cnt = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const { result } = useContext(ResultContext);
-  console.log(result);
+
   return (
     <ScoreWrapper>
       <ScoreTable>
