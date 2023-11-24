@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0b65c97d.css","mappings":"0GAEA,KAEE,2CAAiD,CADjD,QAEF","sources":["index.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Nanum+Pen+Script&display=swap');\n\nbody {\n  margin: 0;\n  font-family: 'Nanum Pen Script', 'East Sea Dokdo';\n}\n"],"names":[],"sourceRoot":""}

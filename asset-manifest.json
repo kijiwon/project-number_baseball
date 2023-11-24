@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project-number_baseball/static/css/main.0b65c97d.css",
+    "main.js": "/project-number_baseball/static/js/main.4b24ecdb.js",
+    "index.html": "/project-number_baseball/index.html",
+    "main.0b65c97d.css.map": "/project-number_baseball/static/css/main.0b65c97d.css.map",
+    "main.4b24ecdb.js.map": "/project-number_baseball/static/js/main.4b24ecdb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0b65c97d.css",
+    "static/js/main.4b24ecdb.js"
+  ]
+}
