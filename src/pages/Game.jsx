@@ -6,72 +6,72 @@ import { GameOverContext, ResultContext, RandomNumberContext } from '../App';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
 
 const InputWrapper = styled.div`
-  width: 70%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
   align-items: end;
   margin-top: 100px;
   .retry {
     font-size: 20px;
+    font-weight: 700;
     border-radius: 25px;
-    cursor: pointer;
-    padding: 10px;
-
+    padding: 5px;
+    margin-right: 10px;
     background-color: ${COLOR.main_yellow};
     color: ${COLOR.main_green};
+    cursor: pointer;
     &:hover {
       background-color: ${COLOR.hover_yellow};
     }
   }
-  @media (max-width: ${SIZE.mobileMax}) {
-    width: 90%;
+  @media (min-width: ${SIZE.tablet}) {
+    width: 70%;
     .retry {
-      font-size: 20px;
-      font-weight: 700;
-      padding: 5px;
-      margin-right: 10px;
+      padding: 10px;
     }
   }
 `;
 
 const InputNumber = styled.input`
-  @media (max-width: ${SIZE.mobileMax}) {
-    width: 140px;
-    font-size: 22px;
-    padding-left: 10px;
-    letter-spacing: 20px;
-  }
-  width: 220px;
-  height: 60px;
+  width: 140px;
+  height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Nanum Pen Script';
+  padding-left: 10px;
+  letter-spacing: 20px;
 
   background-color: inherit;
   border-bottom: 2px solid ${COLOR.main_yellow};
   text-align: center;
-  letter-spacing: 30px;
-  padding-left: 20px;
-  font-size: 40px;
-  font-weight: bold;
-  font-family: 'Nanum Pen Script';
+  @media (min-width: ${SIZE.tablet}) {
+    width: 220px;
+    height: 60px;
+    letter-spacing: 30px;
+    padding-left: 20px;
+    font-size: 40px;
+  }
 `;
 
 const SubmitButton = styled.button`
-  @media (max-width: ${SIZE.mobileMax}) {
-    width: 60px;
-    height: 38px;
-    border-radius: 10px;
-  }
-  width: 100px;
-  height: 50px;
+  width: 60px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
   background-color: ${COLOR.main_yellow};
   color: ${COLOR.main_green};
-  font-size: 24px;
-  font-weight: 700;
+
   font-family: 'Nanum Pen Script';
-  border: none;
-  border-radius: 16px;
   &:hover {
     background-color: ${COLOR.hover_yellow};
     color: ${COLOR.hover_green};
+  }
+  @media (min-width: ${SIZE.tablet}) {
+    width: 100px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 16px;
   }
 `;
 

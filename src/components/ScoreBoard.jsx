@@ -4,72 +4,97 @@ import { COLOR, SIZE } from '../style/theme';
 import { ResultContext } from '../App';
 
 const ScoreWrapper = styled.div`
-  width: 70%;
   margin-top: 50px;
-  @media (max-width: ${SIZE.mobileMax}) {
-    width: 95%;
-    height: 70vh;
+  width: 90%;
+  height: 70vh;
+  @media (min-width: ${SIZE.tablet}) {
+    width: 70%;
+    height: 100vh;
   }
 `;
 
 const ScoreTable = styled.div`
-  border: 3px solid ${COLOR.gray_green};
-  border-radius: 10px;
-  @media (max-width: ${SIZE.mobileMax}) {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  @media (min-width: ${SIZE.tablet}) {
+    display: block;
+    border: 3px solid ${COLOR.gray_green};
+    border-radius: 10px;
   }
 `;
 
 const ScoreCount = styled.div`
   display: grid;
   text-align: center;
-  grid-template-columns: repeat(9, 1fr);
-
-  border-bottom: 2px solid ${COLOR.gray_green};
-
+  margin-left: 70px;
   p {
+    font-size: 18px;
     padding-top: 10px;
     padding-bottom: 5px;
-    font-size: 26px;
     font-family: 'East Sea Dokdo';
-    border-right: 2px solid ${COLOR.gray_green};
     color: ${COLOR.main_yellow};
+    border-bottom: 2px solid ${COLOR.gray_green};
   }
-  @media (max-width: ${SIZE.mobileMax}) {
+  @media (min-width: ${SIZE.tablet}) {
+    grid-template-columns: repeat(9, 1fr);
+    border-bottom: 2px solid ${COLOR.gray_green};
+    margin: 0;
     p {
-      font-size: 20px;
+      font-size: 26px;
+      border-right: 2px solid ${COLOR.gray_green};
+      border-bottom: none;
+    }
+    p:last-child {
+      border: none;
     }
   }
 `;
 
 const Score = styled.div`
-  height: 160px;
+  height: fit-content;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-gap: 9px;
   text-align: center;
-
-  padding-top: 30px;
-
+  padding-top: 9px;
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid ${COLOR.gray_green};
+  }
   p:first-child {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 24px;
     font-family: 'Nanum Pen Script';
     color: black;
-    margin-bottom: 38px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   p {
     font-family: 'East Sea Dokdo';
-    font-size: 22px;
+    font-size: 24px;
     color: ${COLOR.main_yellow};
+    padding-right: 10px;
   }
-
-  @media (max-width: ${SIZE.mobileMax}) {
-    height: 120px;
+  @media (min-width: ${SIZE.tablet}) {
+    height: 160px;
+    grid-template-columns: repeat(9, 1fr);
+    padding-top: 20px;
+    div {
+      display: block;
+      border: none;
+    }
     p:first-child {
-      font-size: 18px;
+      font-size: 28px;
+      font-weight: 600;
       margin-bottom: 20px;
+      margin-bottom: 38px;
+      padding: 0;
     }
     p {
-      font-size: 14px;
+      font-size: 22px;
     }
   }
 `;

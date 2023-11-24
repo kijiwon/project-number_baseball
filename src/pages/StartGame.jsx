@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR } from '../style/theme';
+import { COLOR, SIZE } from '../style/theme';
 import { useNavigate } from 'react-router-dom';
 
 const LogoWrapper = styled.div`
@@ -7,9 +7,14 @@ const LogoWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
   img {
-    width: 80%;
+    width: 100%;
+  }
+  @media (min-width: ${SIZE.tablet}) {
+    padding-top: 80px;
+    img {
+      width: 80%;
+    }
   }
 `;
 
@@ -19,8 +24,7 @@ const StartButton = styled.button`
 
   border: none;
   border-radius: 15px;
-
-  margin-top: -80px;
+  margin-top: -30px;
   cursor: pointer;
 
   background-color: ${COLOR.main_yellow};
@@ -37,6 +41,9 @@ const StartButton = styled.button`
     box-shadow:
       0 5px 5px rgba(0, 0, 0, 0.2),
       0 5px 5px rgba(0, 0, 0, 0.2);
+  }
+  @media (min-width: ${SIZE.tablet}) {
+    margin-top: -80px;
   }
 `;
 

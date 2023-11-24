@@ -4,19 +4,20 @@ import React from 'react';
 import { SIZE } from '../style/theme';
 
 const HeaderWrapper = styled.header`
-  width: 80%;
+  width: 100%;
   height: 80px;
   display: flex;
   justify-content: flex-end;
-  padding-right: 100px;
+  padding-right: 20px;
   padding-top: 20px;
   .rule {
     font-size: 26px;
     cursor: pointer;
   }
-  @media (max-width: ${SIZE.mobileMax}) {
-    width: 100%;
-    padding-right: 20px;
+
+  @media (min-width: ${SIZE.tablet}) {
+    padding-right: 100px;
+    width: 80%;
   }
 `;
 

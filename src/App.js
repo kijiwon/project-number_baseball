@@ -34,29 +34,36 @@ const RuleWrapper = styled.section`
   border-radius: 20px;
   box-shadow: 0px 3px 2px 1px rgba(0, 0, 0, 0.4);
   font-family: 'Nanum Pen Script';
-
+  font-size: 18px;
+  margin: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  font-size: 20px;
   line-height: 2;
   h1 {
     text-align: center;
     font-size: 28px;
     font-weight: bold;
   }
-  @media (max-width: ${SIZE.mobileMax}) {
-    font-size: 18px;
+  @media (min-width: ${SIZE.tablet}) {
+    font-size: 20px;
+    margin: 0;
   }
 `;
 
 const RuleList = styled.ul`
   list-style: square;
   padding-left: 30px;
-  @media (max-width: ${SIZE.mobileMax}) {
-    font-size: 18px;
+  p {
+    font-size: 14px;
+  }
+  @media (min-width: ${SIZE.tablet}) {
+    p {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
   }
 `;
 
