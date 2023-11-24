@@ -47,11 +47,17 @@ const RuleWrapper = styled.section`
     font-size: 28px;
     font-weight: bold;
   }
+  @media (max-width: ${SIZE.mobileMax}) {
+    font-size: 18px;
+  }
 `;
 
 const RuleList = styled.ul`
   list-style: square;
   padding-left: 30px;
+  @media (max-width: ${SIZE.mobileMax}) {
+    font-size: 18px;
+  }
 `;
 
 const CloseButton = styled.button`

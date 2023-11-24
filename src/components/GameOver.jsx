@@ -58,6 +58,21 @@ const GameScoreWrapper = styled.div`
   }
 `;
 
+const RightAnswer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Nanum Pen Script';
+  font-size: 24px;
+  span {
+    font-family: 'East Sea Dokdo';
+    font-size: 30px;
+    margin-top: 10px;
+  }
+`;
+
 const RetryButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,7 +104,8 @@ const ResetButton = styled.button`
 const GameOver = () => {
   const { result, setResult } = useContext(ResultContext);
   const { gameOver, setGameOver } = useContext(GameOverContext);
-  const { setRandomNum, getRandomNumbers } = useContext(RandomNumberContext);
+  const { randomNum, setRandomNum, getRandomNumbers } =
+    useContext(RandomNumberContext);
 
   const handleRetryGame = () => {
     setGameOver(!gameOver);
@@ -105,10 +121,15 @@ const GameOver = () => {
     <GameOverScreen>
       <GameOverWrapper>
         <h1>{title}</h1>
-        {title === 'HOMERUN!!' && (
+        {title === 'HOMERUN!!' ? (
           <GameScoreWrapper>
             <p>점수</p> <span>{100 - (result.length - 1) * 10}</span>
           </GameScoreWrapper>
+        ) : (
+          <RightAnswer>
+            <p>정답은</p>
+            <span>{randomNum}</span>
+          </RightAnswer>
         )}
         <RetryButtonWrapper>
           <p>다시 시도하고 싶다면</p>
