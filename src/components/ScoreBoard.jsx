@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
 import React, { useContext } from 'react';
 import { COLOR, SIZE } from '../style/theme';

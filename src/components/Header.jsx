@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
 import React from 'react';
