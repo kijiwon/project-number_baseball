@@ -8,7 +8,7 @@ const ScoreWrapper = styled.div`
   margin-top: 50px;
   width: 90%;
   height: 70vh;
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 70%;
     height: 100vh;
   }
@@ -18,7 +18,7 @@ const ScoreTable = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     display: block;
     border: 3px solid ${COLOR.gray_green};
     border-radius: 10px;
@@ -37,7 +37,7 @@ const ScoreCount = styled.div`
     color: ${COLOR.main_yellow};
     border-bottom: 2px solid ${COLOR.gray_green};
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     grid-template-columns: repeat(9, 1fr);
     border-bottom: 2px solid ${COLOR.gray_green};
     margin: 0;
@@ -79,7 +79,7 @@ const Score = styled.div`
     color: ${COLOR.main_yellow};
     padding-right: 10px;
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     height: 160px;
     grid-template-columns: repeat(9, 1fr);
     padding-top: 20px;

@@ -48,7 +48,7 @@ const RuleWrapper = styled.section`
     font-size: 28px;
     font-weight: bold;
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     font-size: 20px;
     margin: 0;
   }
@@ -60,7 +60,7 @@ const RuleList = styled.ul`
   p {
     font-size: 14px;
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     p {
       font-size: 20px;
       margin-bottom: 10px;
@@ -110,8 +110,11 @@ const getRandomNumbers = () => {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const numberArray = [];
 
-  for (let i = 0; i < 4; i++) {
-    const chosenNum = numbers.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+  for (let i = 1; i <= 4; i++) {
+    const chosenNum = numbers.splice(
+      Math.floor(Math.random() * (9 - i) + 1),
+      1,
+    )[0];
     numberArray.push(chosenNum);
   }
   return numberArray;
@@ -121,7 +124,6 @@ function App() {
   const [openRule, setOpenRule] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [randomNum, setRandomNum] = useState(getRandomNumbers());
-
   const [result, setResult] = useState([]);
 
   const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
