@@ -11,7 +11,7 @@ const LogoWrapper = styled.div`
   img {
     width: 100%;
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     padding-top: 80px;
     img {
       width: 80%;
@@ -43,14 +43,14 @@ const StartButton = styled.button`
       0 5px 5px rgba(0, 0, 0, 0.2),
       0 5px 5px rgba(0, 0, 0, 0.2);
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     margin-top: -80px;
   }
 `;
 
 const StartGame = () => {
   const nav = useNavigate();
-  console.log('page loading');
+
   return (
     <LogoWrapper>
       <img src={process.env.PUBLIC_URL + '/assets/1.png'} alt="초록 로고" />

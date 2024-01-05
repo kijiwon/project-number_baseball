@@ -16,7 +16,7 @@ const HeaderWrapper = styled.header`
     cursor: pointer;
   }
 
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     padding-right: 100px;
     width: 80%;
   }

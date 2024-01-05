@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import { COLOR, SIZE } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
@@ -25,7 +25,7 @@ const InputWrapper = styled.div`
       background-color: ${COLOR.hover_yellow};
     }
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 70%;
     .retry {
       padding: 10px;
@@ -45,7 +45,7 @@ const InputNumber = styled.input`
   background-color: inherit;
   border-bottom: 2px solid ${COLOR.main_yellow};
   text-align: center;
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 220px;
     height: 60px;
     letter-spacing: 30px;
@@ -67,7 +67,7 @@ const SubmitButton = styled.button`
     background-color: ${COLOR.hover_yellow};
     color: ${COLOR.hover_green};
   }
-  @media (min-width: ${SIZE.tablet}) {
+  @media screen and (min-width: ${SIZE.tablet}) {
     width: 100px;
     height: 50px;
     font-size: 24px;
@@ -82,6 +82,7 @@ const Game = () => {
   const { gameOver, setGameOver } = useContext(GameOverContext);
   const { randomNum, setRandomNum, getRandomNumbers } =
     useContext(RandomNumberContext);
+
   const inputRef = useRef();
 
   const handleSubmit = () => {
@@ -155,4 +156,4 @@ const Game = () => {
   );
 };
 
-export default Game;
+export default React.memo(Game);
