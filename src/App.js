@@ -138,19 +138,10 @@ function App() {
             <AppWrapper>
               <Header handleGameRule={handleGameRule} />
               {openRule && <GameRule handleGameRule={handleGameRule} />}
-              {gameOver && (
-                <GameOver
-                  gameOver={gameOver}
-                  setGameOver={setGameOver}
-                  result={result}
-                />
-              )}
+              {gameOver && <GameOver />}
               <Routes>
                 <Route path="/" element={<StartGame />} />
-                <Route
-                  path="/game"
-                  element={<Game result={result} setResult={setResult} />}
-                />
+                <Route path="/game" element={<Game />} />
               </Routes>
             </AppWrapper>
           </BrowserRouter>
