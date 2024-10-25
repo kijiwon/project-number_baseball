@@ -2,11 +2,18 @@
 import StartGame from './pages/StartGame';
 import Game from './pages/Game';
 import styled from 'styled-components';
-import { SIZE, COLOR } from '../src/style/theme';
+import { SIZE, COLOR } from './style/theme';
 import React, { useState, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import GameOver from './components/GameOver';
+import {
+  ResultContextType,
+  GameOverContextType,
+  RandomNumberContextType,
+} from '../types/type';
+import Login from 'pages/Login';
+
 const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
   min-width: ${SIZE.mobileMin};
@@ -83,11 +90,16 @@ const CloseButton = styled.button`
   }
 `;
 
-export const ResultContext = React.createContext();
-export const GameOverContext = React.createContext();
-export const RandomNumberContext = React.createContext();
+export const ResultContext = React.createContext<ResultContextType | null>(
+  null,
+);
+export const GameOverContext = React.createContext<GameOverContextType | null>(
+  null,
+);
+export const RandomNumberContext =
+  React.createContext<RandomNumberContextType | null>(null);
 
-const GameRule = ({ handleGameRule }) => {
+const GameRule = ({ handleGameRule }: { handleGameRule: () => void }) => {
   return (
     <Rule>
       <RuleWrapper>
@@ -138,19 +150,11 @@ function App() {
             <AppWrapper>
               <Header handleGameRule={handleGameRule} />
               {openRule && <GameRule handleGameRule={handleGameRule} />}
-              {gameOver && (
-                <GameOver
-                  gameOver={gameOver}
-                  setGameOver={setGameOver}
-                  result={result}
-                />
-              )}
+              {gameOver && <GameOver />}
               <Routes>
                 <Route path="/" element={<StartGame />} />
-                <Route
-                  path="/game"
-                  element={<Game result={result} setResult={setResult} />}
-                />
+                <Route path="/game" element={<Game />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </AppWrapper>
           </BrowserRouter>
