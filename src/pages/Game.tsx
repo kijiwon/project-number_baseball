@@ -78,16 +78,23 @@ const SubmitButton = styled.button`
 
 const Game = () => {
   const [answer, setAnswer] = useState('');
-  const { result, setResult } = useContext(ResultContext);
-  const { gameOver, setGameOver } = useContext(GameOverContext);
-  const { randomNum, setRandomNum, getRandomNumbers } =
-    useContext(RandomNumberContext);
+  const resultContext = useContext(ResultContext);
+  const gameOverContext = useContext(GameOverContext);
+  const randomNumberContext = useContext(RandomNumberContext);
 
-  const inputRef = useRef();
+  if (!resultContext || !gameOverContext || !randomNumberContext) {
+    throw new Error('Context must be used within a Provider');
+  }
+
+  const { result, setResult } = resultContext;
+  const { gameOver, setGameOver } = gameOverContext;
+  const { randomNum, setRandomNum, getRandomNumbers } = randomNumberContext;
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = () => {
     if (answer.length < 1) {
-      inputRef.current.focus();
+      inputRef.current?.focus();
       return;
     }
     if (answer === randomNum.join('')) {
@@ -132,7 +139,7 @@ const Game = () => {
     setResult([]);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSubmit();
     }
