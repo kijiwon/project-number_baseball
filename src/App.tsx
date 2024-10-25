@@ -12,6 +12,7 @@ import {
   GameOverContextType,
   RandomNumberContextType,
 } from '../types/type';
+import Login from 'pages/Login';
 
 const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
@@ -153,6 +154,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<StartGame />} />
                 <Route path="/game" element={<Game />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </AppWrapper>
           </BrowserRouter>
