@@ -5,6 +5,11 @@ import { COLOR, SIZE } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
 import { GameOverContext, ResultContext, RandomNumberContext } from '../App';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
+import {
+  GameOverContextType,
+  RandomNumberContextType,
+  ResultContextType,
+} from '../../types/type';
 
 const InputWrapper = styled.div`
   width: 90%;
@@ -77,10 +82,14 @@ const SubmitButton = styled.button`
 `;
 
 const Game = () => {
-  const [answer, setAnswer] = useState('');
-  const resultContext = useContext(ResultContext);
-  const gameOverContext = useContext(GameOverContext);
-  const randomNumberContext = useContext(RandomNumberContext);
+  const [answer, setAnswer] = useState<string>('');
+  const resultContext = useContext<ResultContextType | null>(ResultContext);
+  const gameOverContext = useContext<GameOverContextType | null>(
+    GameOverContext,
+  );
+  const randomNumberContext = useContext<RandomNumberContextType | null>(
+    RandomNumberContext,
+  );
 
   if (!resultContext || !gameOverContext || !randomNumberContext) {
     throw new Error('Context must be used within a Provider');

@@ -11,6 +11,7 @@ import {
   ResultContextType,
   GameOverContextType,
   RandomNumberContextType,
+  ResultType,
 } from '../types/type';
 import SignUp from 'pages/Signup';
 
@@ -133,10 +134,10 @@ const getRandomNumbers = () => {
 };
 
 function App() {
-  const [openRule, setOpenRule] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [randomNum, setRandomNum] = useState(getRandomNumbers());
-  const [result, setResult] = useState([]);
+  const [openRule, setOpenRule] = useState<boolean>(false);
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [randomNum, setRandomNum] = useState<number[]>(getRandomNumbers());
+  const [result, setResult] = useState<ResultType[]>([]);
 
   const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
 

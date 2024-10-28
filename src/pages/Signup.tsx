@@ -1,11 +1,13 @@
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const SignUp = () => {
         displayName: name,
       });
       console.log(credentials);
+      navigate('/game');
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +30,7 @@ const SignUp = () => {
 
   return (
     <div>
-      Login
+      Sign-up
       <form onSubmit={handleLogin}>
         <input
           type="text"

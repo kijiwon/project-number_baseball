@@ -22,7 +22,11 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const Header = ({ handleGameRule }) => {
+interface HeaderProps {
+  handleGameRule: () => void;
+}
+
+const Header = ({ handleGameRule }: HeaderProps) => {
   return (
     <HeaderWrapper>
       <BsFillQuestionCircleFill className="rule" onClick={handleGameRule} />

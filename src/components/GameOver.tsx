@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import { GameOverContext, RandomNumberContext, ResultContext } from '../App';
 import { FaArrowDown } from 'react-icons/fa';
 import { COLOR } from '../style/theme';
+import {
+  GameOverContextType,
+  RandomNumberContextType,
+  ResultContextType,
+} from '../../types/type';
 
 const GameOverScreen = styled.div`
   position: absolute;
@@ -103,10 +108,17 @@ const ResetButton = styled.button`
 `;
 
 const GameOver = () => {
-  const { result, setResult } = useContext(ResultContext);
-  const { gameOver, setGameOver } = useContext(GameOverContext);
+  const resultContext = useContext<ResultContextType | null>(ResultContext);
+  const gameOverContext = useContext<GameOverContextType | null>(
+    GameOverContext,
+  );
+  const randomNumberContext = useContext<RandomNumberContextType | null>(
+    RandomNumberContext,
+  );
+  const { result, setResult } = resultContext as ResultContextType;
+  const { gameOver, setGameOver } = gameOverContext as GameOverContextType;
   const { randomNum, setRandomNum, getRandomNumbers } =
-    useContext(RandomNumberContext);
+    randomNumberContext as RandomNumberContextType;
 
   const handleRetryGame = () => {
     setGameOver(!gameOver);

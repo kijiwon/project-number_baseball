@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import React, { useContext } from 'react';
 import { COLOR, SIZE } from '../style/theme';
 import { ResultContext } from '../App';
+import { ResultContextType } from '../../types/type';
 
 const ScoreWrapper = styled.div`
   margin-top: 50px;
@@ -102,7 +103,8 @@ const Score = styled.div`
 
 const ScoreBoard = () => {
   const cnt = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const { result } = useContext(ResultContext);
+  const resultContext = useContext(ResultContext);
+  const { result } = resultContext as ResultContextType;
 
   return (
     <ScoreWrapper>

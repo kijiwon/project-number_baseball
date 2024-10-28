@@ -1,17 +1,15 @@
 import { SetStateAction } from 'react';
 import { Dispatch } from 'react';
 
+export type ResultType = {
+  answer: string;
+  result: string;
+  tries: number;
+};
+
 export interface ResultContextType {
-  result: Array<{ answer: string; result: string; tries: number }> | [];
-  setResult: React.Dispatch<
-    React.SetStateAction<
-      {
-        answer: string;
-        result: string;
-        tries: number;
-      }[]
-    >
-  >;
+  result: Array<ResultType> | [];
+  setResult: React.Dispatch<React.SetStateAction<ResultType[]>>;
 }
 
 export interface GameOverContextType {
