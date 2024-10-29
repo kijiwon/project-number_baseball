@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import StartGame from './pages/StartGame';
 import Game from './pages/Game';
 import styled from 'styled-components';

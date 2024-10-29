@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
 import { COLOR, SIZE } from '../style/theme';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +54,7 @@ const StartGame = () => {
     <LogoWrapper>
       <img src={process.env.PUBLIC_URL + '/assets/1.png'} alt="초록 로고" />
       <StartButton onClick={() => nav('/game')}>Start</StartButton>
+      <button onClick={() => nav('/signup')}>sign-up</button>
     </LogoWrapper>
   );
 };

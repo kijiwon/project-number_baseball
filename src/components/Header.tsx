@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import styled from 'styled-components';
 import { BsFillQuestionCircleFill } from 'react-icons/bs';
 import React from 'react';
@@ -22,11 +21,7 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-interface HeaderProps {
-  handleGameRule: () => void;
-}
-
-const Header = ({ handleGameRule }: HeaderProps) => {
+const Header = ({ handleGameRule }: { handleGameRule: () => void }) => {
   return (
     <HeaderWrapper>
       <BsFillQuestionCircleFill className="rule" onClick={handleGameRule} />

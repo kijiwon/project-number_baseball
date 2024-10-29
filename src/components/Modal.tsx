@@ -1,11 +1,6 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface ModalProps {
-  children: ReactNode;
-  onClose: () => void;
-}
-
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -20,12 +15,18 @@ const ModalOverlay = styled.div`
 
 const ModalContent = styled.div`
   background: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 400px;
+  padding: 24px;
+  border-radius: 10px;
+  width: 600px;
+  height: 550px;
 `;
 
-function Modal({ children, onClose }: ModalProps) {
+interface ModalProps {
+  children: ReactNode;
+  onClose: () => void;
+}
+
+const Modal = ({ children, onClose }: ModalProps) => {
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
@@ -33,6 +34,6 @@ function Modal({ children, onClose }: ModalProps) {
       </ModalContent>
     </ModalOverlay>
   );
-}
+};
 
 export default Modal;

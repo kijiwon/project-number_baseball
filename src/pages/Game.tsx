@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import React, { useState, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import { COLOR, SIZE } from '../style/theme';
@@ -99,6 +98,7 @@ const Game = () => {
   const { gameOver, setGameOver } = gameOverContext;
   const { randomNum, setRandomNum, getRandomNumbers } = randomNumberContext;
 
+  console.log(randomNum);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = () => {
