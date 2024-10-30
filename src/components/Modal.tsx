@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
+import { COLOR } from 'style/theme';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -14,11 +15,11 @@ const ModalOverlay = styled.div`
 `;
 
 const ModalContent = styled.div`
-  background: white;
-  padding: 24px;
+  background: ${COLOR.main_yellow};
+  padding: 10px;
   border-radius: 10px;
   width: 600px;
-  height: 550px;
+  height: 520px;
 `;
 
 interface ModalProps {
