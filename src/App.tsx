@@ -13,6 +13,7 @@ import {
   ResultType,
 } from '../types/type';
 import SignUp from 'pages/Signup';
+import Login from 'pages/Login';
 
 const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
@@ -154,6 +155,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<StartGame />} />
                 <Route path="/game" element={<Game />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
               </Routes>
             </AppWrapper>

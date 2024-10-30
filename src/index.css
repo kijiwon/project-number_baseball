@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Nanum Pen Script', 'East Sea Dokdo';
+  font-family: 'Nanum Pen Script', 'East Sea Dokdo', 'Jua';
 }
