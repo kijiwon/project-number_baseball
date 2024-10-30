@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { COLOR } from 'style/theme';
 
 const ModalOverlay = styled.div`
+  position: relative;
   position: fixed;
   top: 0;
   left: 0;

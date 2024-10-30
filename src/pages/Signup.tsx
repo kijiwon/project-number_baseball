@@ -74,6 +74,28 @@ const ErrorMessage = styled.p`
   text-align: center;
 `;
 
+const SuccessModal = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 120px;
+  border-radius: 10px;
+  top: 300px;
+  margin-left: 48px;
+  font-size: 22px;
+  background-color: ${COLOR.hover_yellow};
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+  > span {
+    font-size: 16px;
+    margin-top: 5px;
+    color: gray;
+  }
+`;
+
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -163,7 +185,13 @@ const SignUp = () => {
         </div>
         <SubmitButton type="submit" value={'회원가입'} />
       </FormContainer>
-      {successSignup && <div>회원가입이 완료되었습니다</div>}
+      {successSignup && (
+        <SuccessModal>
+          회원가입이 완료되었습니다!
+          <br />
+          <span>로그인 페이지로 이동됩니다...</span>
+        </SuccessModal>
+      )}
     </Modal>
   );
 };
