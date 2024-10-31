@@ -43,6 +43,7 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.input`
+  width: 100%;
   height: 60px;
   border-radius: 12px;
   background-color: ${COLOR.hover_green};
@@ -76,14 +77,14 @@ export const SuccessModal = styled.div`
   height: 120px;
   border-radius: 10px;
   top: 300px;
-  margin-left: 48px;
+  margin-left: 30px;
   font-size: 22px;
   background-color: ${COLOR.hover_yellow};
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 
   > span {
-    font-size: 16px;
-    margin-top: 5px;
+    font-size: 15px;
+    margin-top: 7px;
     color: gray;
   }
 `;

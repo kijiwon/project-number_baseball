@@ -63,8 +63,8 @@ const SignUp = () => {
   }, [errorCode]);
 
   return (
-    <Modal onClose={() => {}}>
-      <HeaderContainer>
+    <Modal>
+      <HeaderContainer onClick={() => navigate('/login')}>
         <IoArrowBack size={22} />
         <span>뒤로가기</span>
       </HeaderContainer>

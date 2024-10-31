@@ -18,7 +18,7 @@ const ModalOverlay = styled.div`
 
 const ModalContent = styled.div`
   background: ${COLOR.main_yellow};
-  padding: 20px 10px 10px;
+  padding: 20px;
   border-radius: 10px;
   width: 600px;
   max-width: 800px;
@@ -28,12 +28,11 @@ const ModalContent = styled.div`
 
 interface ModalProps {
   children: ReactNode;
-  onClose: () => void;
 }
 
-const Modal = ({ children, onClose }: ModalProps) => {
+const Modal = ({ children }: ModalProps) => {
   return (
-    <ModalOverlay onClick={onClose}>
+    <ModalOverlay>
       <ModalContent onClick={(e) => e.stopPropagation()}>
         {children}
       </ModalContent>
