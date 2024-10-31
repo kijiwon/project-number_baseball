@@ -35,7 +35,7 @@ export const Input = styled.input`
   letter-spacing: 2px;
   border-radius: 12px;
   padding-left: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 24px;
 
   &:focus {
     outline: none;

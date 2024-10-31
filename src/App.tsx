@@ -14,6 +14,7 @@ import {
 } from '../types/type';
 import SignUp from 'pages/Signup';
 import Login from 'pages/Login';
+import { auth } from './firebase';
 
 const AppWrapper = styled.div`
   background-color: ${COLOR.main_green};
@@ -138,6 +139,19 @@ function App() {
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [randomNum, setRandomNum] = useState<number[]>(getRandomNumbers());
   const [result, setResult] = useState<ResultType[]>([]);
+
+  // 로그인시 localStorage에 유저 정보 저장
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          uid: user.uid,
+          displayName: user.displayName,
+        }),
+      );
+    }
+  });
 
   const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
 

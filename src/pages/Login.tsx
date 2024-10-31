@@ -56,7 +56,10 @@ const Login = () => {
         }, 2000);
       })
       .catch((error) => {
-        console.log(error.code);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('errorCode:', errorCode);
+        console.log('errorMessage:', errorMessage);
       });
   };
 
