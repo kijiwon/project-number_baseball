@@ -50,12 +50,20 @@ const StartButton = styled.button`
 
 const StartGame = () => {
   const nav = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user') as string);
+
+  const handleStart = () => {
+    if (user === null) {
+      nav('login');
+    } else {
+      nav('/game');
+    }
+  };
 
   return (
     <LogoWrapper>
       <img src={process.env.PUBLIC_URL + '/assets/1.png'} alt="초록 로고" />
-      <StartButton onClick={() => nav('/game')}>Start</StartButton>
-      <button onClick={() => nav('/login')}>로그인</button>
+      <StartButton onClick={handleStart}>Start</StartButton>
     </LogoWrapper>
   );
 };

@@ -16,6 +16,7 @@ import {
   SubmitButton,
   SuccessModal,
 } from 'style/ModalCommon.styled';
+import { FirebaseError } from 'firebase/app';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -30,22 +31,25 @@ const SignUp = () => {
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        updateProfile(user, {
-          displayName: name,
-        });
-        setSuccessSignup(true);
-        setTimeout(() => {
-          navigate('/login');
-        }, 2000);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
-        setErrorCode(errorCode);
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      const user = userCredential.user;
+
+      await updateProfile(user, { displayName: name });
+
+      setSuccessSignup(true);
+
+      // 2초 후 로그인 페이지로 이동
+      setTimeout(() => navigate('/login'), 2000);
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        setErrorCode(error.code);
+      }
+    }
   };
 
   useEffect(() => {

@@ -140,21 +140,8 @@ function App() {
   const [randomNum, setRandomNum] = useState<number[]>(getRandomNumbers());
   const [result, setResult] = useState<ResultType[]>([]);
 
-  // 로그인시 localStorage에 유저 정보 저장
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          uid: user.uid,
-          displayName: user.displayName,
-        }),
-      );
-    }
-  });
-
   const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
-
+  console.log(auth.currentUser);
   return (
     <RandomNumberContext.Provider
       value={{ randomNum, setRandomNum, getRandomNumbers }}

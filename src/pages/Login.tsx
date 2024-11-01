@@ -46,21 +46,34 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const userName = userCredential.user.displayName;
-        setUserName(userName as string);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      const user = userCredential.user;
+
+      if (user) {
+        // 로그인 시 localStorage에 유저 정보 저장
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            uid: user.uid,
+            displayName: user.displayName,
+          }),
+        );
+
+        setUserName(user.displayName || '');
         setIsLoggedIn(true);
-        setTimeout(() => {
-          navigate('/game');
-        }, 2000);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('errorCode:', errorCode);
-        console.log('errorMessage:', errorMessage);
-      });
+
+        // 2초 후 게임 페이지로 이동
+        setTimeout(() => navigate('/game'), 2000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

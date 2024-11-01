@@ -13,6 +13,7 @@ import {
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const GameHeaderWrapper = styled.header`
   height: 80px;
@@ -110,6 +111,7 @@ const Game = () => {
   const { randomNum, setRandomNum, getRandomNumbers } = randomNumberContext;
   const user = JSON.parse(localStorage.getItem('user') as string);
   const userName = user?.displayName;
+
   const navigate = useNavigate();
 
   console.log(randomNum);
@@ -177,6 +179,12 @@ const Game = () => {
       console.error('로그아웃 실패:', error);
     }
   };
+
+  useEffect(() => {
+    if (user === null) {
+      navigate('/');
+    }
+  }, []);
 
   return (
     <>
