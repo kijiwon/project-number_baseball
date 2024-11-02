@@ -16,6 +16,7 @@ import {
 } from 'style/ModalCommon.styled';
 import styled from 'styled-components';
 import { COLOR } from 'style/theme';
+import { FirebaseError } from 'firebase/app';
 
 const SignUpButtonWrapper = styled.div`
   height: 40px;
@@ -72,7 +73,9 @@ const Login = () => {
         setTimeout(() => navigate('/game'), 2000);
       }
     } catch (error) {
-      console.log(error);
+      if (error instanceof FirebaseError) {
+        console.log(error.code);
+      }
     }
   };
 

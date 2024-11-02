@@ -1,4 +1,4 @@
-/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/react-in-jsx-scope */
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { GameOverContext, RandomNumberContext, ResultContext } from '../App';
