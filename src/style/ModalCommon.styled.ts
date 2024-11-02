@@ -79,6 +79,7 @@ export const SuccessModal = styled.div`
   top: 300px;
   margin-left: 30px;
   font-size: 22px;
+  font-family: 'Jua';
   background-color: ${COLOR.hover_yellow};
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 

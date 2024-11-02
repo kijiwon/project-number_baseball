@@ -7,6 +7,8 @@ import { signOut } from 'firebase/auth';
 import { FaBaseballBatBall } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import { FaRankingStar } from 'react-icons/fa6';
+import { useState } from 'react';
+import { SuccessModal } from 'style/ModalCommon.styled';
 
 const HeaderWrapper = styled.header`
   width: 100%;
@@ -92,6 +94,7 @@ const UserName = styled.p`
 `;
 
 const Header = ({ handleGameRule }: { handleGameRule: () => void }) => {
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') as string);
   const userName = user?.displayName;
@@ -99,32 +102,43 @@ const Header = ({ handleGameRule }: { handleGameRule: () => void }) => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      localStorage.removeItem('user');
-      navigate('/');
+      setIsLoggedOut(true);
+      setTimeout(() => {
+        localStorage.removeItem('user');
+        navigate('/');
+        setIsLoggedOut(false);
+      }, 1500);
     } catch (error) {
       console.error('로그아웃 실패:', error);
     }
   };
 
   return (
-    <HeaderWrapper>
-      <ScoreBoard>
-        <FaRankingStar size={24} />
-        랭킹 보드
-      </ScoreBoard>
-      <HeaderRightSide>
-        {userName && (
-          <UserWrapper>
-            <UserName>
-              <FaBaseballBatBall />
-              {userName}
-            </UserName>
-            <button onClick={handleLogout}>로그아웃</button>
-          </UserWrapper>
-        )}
-        <BsFillQuestionCircleFill className="rule" onClick={handleGameRule} />
-      </HeaderRightSide>
-    </HeaderWrapper>
+    <>
+      <HeaderWrapper>
+        <ScoreBoard>
+          <FaRankingStar size={24} />
+          랭킹 보드
+        </ScoreBoard>
+        <HeaderRightSide>
+          {userName && (
+            <UserWrapper>
+              <UserName>
+                <FaBaseballBatBall />
+                {userName}
+              </UserName>
+              <button onClick={handleLogout}>로그아웃</button>
+            </UserWrapper>
+          )}
+          <BsFillQuestionCircleFill className="rule" onClick={handleGameRule} />
+        </HeaderRightSide>
+      </HeaderWrapper>
+      {isLoggedOut && (
+        <SuccessModal>
+          로그아웃 되었습니다.<span>다음에 또 만나요!🤗</span>
+        </SuccessModal>
+      )}
+    </>
   );
 };
 

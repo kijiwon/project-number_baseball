@@ -17,6 +17,7 @@ import Login from 'pages/Login';
 import { auth } from './firebase';
 
 const AppWrapper = styled.div`
+  position: relative;
   background-color: ${COLOR.main_green};
   min-width: ${SIZE.mobileMin};
   width: 100%;

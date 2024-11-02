@@ -43,8 +43,7 @@ const SignUp = () => {
 
       setSuccessSignup(true);
 
-      // 2초 후 로그인 페이지로 이동
-      setTimeout(() => navigate('/login'), 2000);
+      setTimeout(() => navigate('/login'), 1500);
     } catch (error) {
       if (error instanceof FirebaseError) {
         setErrorCode(error.code);

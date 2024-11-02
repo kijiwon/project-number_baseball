@@ -69,8 +69,7 @@ const Login = () => {
         setUserName(user.displayName || '');
         setIsLoggedIn(true);
 
-        // 2초 후 게임 페이지로 이동
-        setTimeout(() => navigate('/game'), 2000);
+        setTimeout(() => navigate('/game'), 1500);
       }
     } catch (error) {
       if (error instanceof FirebaseError) {
