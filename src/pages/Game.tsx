@@ -4,23 +4,14 @@ import { COLOR, SIZE } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
 import { GameOverContext, ResultContext, RandomNumberContext } from '../App';
 import { BsArrowCounterclockwise } from 'react-icons/bs';
-import { FaBaseballBatBall } from 'react-icons/fa6';
+
 import {
   GameOverContextType,
   RandomNumberContextType,
   ResultContextType,
 } from '../../types/type';
-import { auth } from '../firebase';
-import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-
-const GameHeaderWrapper = styled.header`
-  height: 80px;
-  width: 70%;
-
-  background-color: #fff;
-`;
 
 const InputWrapper = styled.div`
   width: 90%;
@@ -110,7 +101,6 @@ const Game = () => {
   const { gameOver, setGameOver } = gameOverContext;
   const { randomNum, setRandomNum, getRandomNumbers } = randomNumberContext;
   const user = JSON.parse(localStorage.getItem('user') as string);
-  const userName = user?.displayName;
 
   const navigate = useNavigate();
 
@@ -170,16 +160,6 @@ const Game = () => {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      localStorage.removeItem('user');
-      navigate('/');
-    } catch (error) {
-      console.error('로그아웃 실패:', error);
-    }
-  };
-
   useEffect(() => {
     if (user === null) {
       navigate('/');
@@ -188,14 +168,6 @@ const Game = () => {
 
   return (
     <>
-      <GameHeaderWrapper>
-        <div>score board</div>
-        <div>
-          <FaBaseballBatBall />
-          {userName}
-        </div>
-        <button onClick={handleLogout}>로그아웃</button>
-      </GameHeaderWrapper>
       <InputWrapper>
         <BsArrowCounterclockwise className="retry" onClick={handleRetry} />
         <InputNumber
