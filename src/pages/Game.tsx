@@ -110,6 +110,14 @@ const Game = () => {
       inputRef.current?.focus();
       return;
     }
+    // 에러 핸들링-문자 입력 방지
+    if (isNaN(Number(answer))) {
+      alert('숫자를 입력해주세요');
+      inputRef.current?.focus();
+      setAnswer('');
+      return;
+    }
+
     if (answer === randomNum.join('')) {
       setResult([
         ...result,
