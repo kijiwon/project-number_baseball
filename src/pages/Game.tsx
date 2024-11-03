@@ -103,7 +103,6 @@ const Game = () => {
 
   const navigate = useNavigate();
 
-  console.log(randomNum);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = () => {
@@ -163,6 +162,7 @@ const Game = () => {
     if (user === null) {
       navigate('/');
     }
+    console.log(randomNum);
   }, []);
 
   return (

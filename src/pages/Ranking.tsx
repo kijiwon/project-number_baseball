@@ -23,6 +23,7 @@ const RankingWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
 
     > p {
       font-size: 18px;
@@ -67,25 +68,22 @@ const RankingTable = styled.table`
     font-family: 'Nanum Pen Script';
   }
 
-  > tbody {
-    flex: 1;
-
-    > tr {
-      height: 50px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #fff;
-      border-radius: 20px;
-      font-size: 22px;
-      font-family: 'Jua';
-      margin-bottom: 20px;
-    }
+  > tbody > tr {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    font-size: 22px;
+    font-family: 'Jua';
+    margin-bottom: 20px;
   }
 `;
 
 const Ranking = () => {
   const [scoresArray, setScoresArray] = useState<ScoreDataType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -110,13 +108,14 @@ const Ranking = () => {
         updatedScoresArray.sort((a, b) => b.score - a.score);
         setScoresArray(updatedScoresArray);
       }
+      setIsLoading(false);
     });
   }, []);
 
   return (
     <RankingWrapper>
-      <div>
-        <IoArrowBack onClick={() => navigate(-1)} size={20} />
+      <div onClick={() => navigate(-1)}>
+        <IoArrowBack size={20} />
         <p>뒤로가기</p>
       </div>
       <RankingTable>
@@ -132,7 +131,9 @@ const Ranking = () => {
           </tr>
         </thead>
         <tbody>
-          {scoresArray.length ? (
+          {isLoading ? (
+            <div>로딩중...</div>
+          ) : scoresArray.length ? (
             scoresArray.map((score, idx) => (
               <tr key={idx}>
                 <td>
@@ -144,7 +145,7 @@ const Ranking = () => {
               </tr>
             ))
           ) : (
-            <div>로딩중...</div>
+            <div>아직 랭킹에 올라간 유저가 없습니다🥲</div>
           )}
         </tbody>
       </RankingTable>
