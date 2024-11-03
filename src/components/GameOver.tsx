@@ -133,14 +133,13 @@ const GameOver = () => {
   };
   const user = JSON.parse(localStorage.getItem('user') as string);
 
-  const database = getDatabase();
   useEffect(() => {
+    const database = getDatabase();
     set(ref(database, 'score_board/' + user.uid), {
       userId: user.uid,
       userName: user.displayName,
       score: score,
     });
-    console.log(database);
   }, []);
 
   return (
