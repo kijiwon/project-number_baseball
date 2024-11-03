@@ -14,6 +14,7 @@ import {
 } from '../types/type';
 import SignUp from 'pages/Signup';
 import Login from 'pages/Login';
+import Ranking from 'pages/Ranking';
 
 const AppWrapper = styled.div`
   position: relative;
@@ -158,6 +159,7 @@ function App() {
                 <Route path="/game" element={<Game />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/ranking" element={<Ranking />} />
               </Routes>
             </AppWrapper>
           </BrowserRouter>
