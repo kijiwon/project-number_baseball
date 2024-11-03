@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { FaRankingStar } from 'react-icons/fa6';
 import { useState } from 'react';
 import { SuccessModal } from 'style/ModalCommon.styled';
+import { getDatabase, onValue, ref } from 'firebase/database';
+import { ScoreDataType } from '../../types/type';
 
 const HeaderWrapper = styled.header`
   width: 100%;
@@ -113,10 +115,36 @@ const Header = ({ handleGameRule }: { handleGameRule: () => void }) => {
     }
   };
 
+  const onClickScoreBoard = () => {
+    const database = getDatabase();
+    const scoreRef = ref(database, 'score_board');
+    onValue(scoreRef, (snapshot) => {
+      const data = snapshot.val();
+      const scoresArray: ScoreDataType[] = [];
+
+      if (data) {
+        // 데이터를 배열로 변환
+        Object.keys(data).forEach((key) => {
+          const entry = data[key];
+          scoresArray.push({
+            userId: entry.userId,
+            userName: entry.userName,
+            score: entry.score,
+          });
+        });
+
+        // score를 기준으로 내림차순 정렬
+        scoresArray.sort((a, b) => b.score - a.score);
+
+        console.log(scoresArray);
+      }
+    });
+  };
+
   return (
     <>
       <HeaderWrapper>
-        <ScoreBoard>
+        <ScoreBoard onClick={onClickScoreBoard}>
           <FaRankingStar size={24} />
           랭킹 보드
         </ScoreBoard>

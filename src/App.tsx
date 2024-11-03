@@ -14,7 +14,6 @@ import {
 } from '../types/type';
 import SignUp from 'pages/Signup';
 import Login from 'pages/Login';
-import { auth } from './firebase';
 
 const AppWrapper = styled.div`
   position: relative;
@@ -142,7 +141,7 @@ function App() {
   const [result, setResult] = useState<ResultType[]>([]);
 
   const handleGameRule = useCallback(() => setOpenRule(!openRule), [openRule]);
-  console.log(auth.currentUser);
+
   return (
     <RandomNumberContext.Provider
       value={{ randomNum, setRandomNum, getRandomNumbers }}

@@ -22,3 +22,5 @@ export interface RandomNumberContextType {
   setRandomNum: Dispatch<SetStateAction<number[]>>;
   getRandomNumbers: () => number[];
 }
+
+export type ScoreDataType = { userId: string; userName: string; score: number };

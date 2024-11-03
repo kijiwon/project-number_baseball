@@ -9,6 +9,8 @@ import {
   RandomNumberContextType,
   ResultContextType,
 } from '../../types/type';
+import { getDatabase, ref, set } from 'firebase/database';
+import { useEffect } from 'react';
 
 const GameOverScreen = styled.div`
   position: absolute;
@@ -119,16 +121,27 @@ const GameOver = () => {
   const { gameOver, setGameOver } = gameOverContext as GameOverContextType;
   const { randomNum, setRandomNum, getRandomNumbers } =
     randomNumberContext as RandomNumberContextType;
+  const title =
+    result[result.length - 1].result === '홈런!!' ? 'HOMERUN!!' : 'Game Over';
+
+  const score = title === 'HOMERUN!!' ? 100 - (result.length - 1) * 10 : 0;
 
   const handleRetryGame = () => {
     setGameOver(!gameOver);
     setResult([]);
     setRandomNum(getRandomNumbers());
   };
+  const user = JSON.parse(localStorage.getItem('user') as string);
 
-  const title =
-    result[result.length - 1].result === '홈런!!' ? 'HOMERUN!!' : 'Game Over';
-  console.log(result);
+  const database = getDatabase();
+  useEffect(() => {
+    set(ref(database, 'score_board/' + user.uid), {
+      userId: user.uid,
+      userName: user.displayName,
+      score: score,
+    });
+    console.log(database);
+  }, []);
 
   return (
     <GameOverScreen>
@@ -136,7 +149,7 @@ const GameOver = () => {
         <h1>{title}</h1>
         {title === 'HOMERUN!!' ? (
           <GameScoreWrapper>
-            <p>점수</p> <span>{100 - (result.length - 1) * 10}</span>
+            <p>점수</p> <span>{score}</span>
           </GameScoreWrapper>
         ) : (
           <RightAnswer>

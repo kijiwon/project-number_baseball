@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { COLOR, SIZE } from '../style/theme';
 import ScoreBoard from '../components/ScoreBoard';
@@ -11,7 +11,6 @@ import {
   ResultContextType,
 } from '../../types/type';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const InputWrapper = styled.div`
   width: 90%;
