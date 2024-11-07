@@ -1,7 +1,7 @@
 <div align="center">
   
 # ⚾️ 숫자 야구 게임 🎮
-<img  width="800" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/5343d052-9542-4d61-b6a7-e298245a7bc5"/>
+<img width="800" alt="게임 메인 페이지" src="https://github.com/user-attachments/assets/80b28791-5766-4bce-b807-3ef31c328858">
 <br/>
 
 `배포 링크` : 🔗[숫자야구](https://numberbaseball.web.app/)    
@@ -43,8 +43,8 @@ Math 내장 객체를 사용해 1-9의 중복되지 않는 네자리 숫자를 �
 ## 🖥️ Service info
 |  시작 페이지  |  게임 페이지  |  게임 설명  |  게임 종료  | 정답 |
 | :----------: | :----------: | :----------: | :----------: | :----------: |
-| <img  width="300" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/5343d052-9542-4d61-b6a7-e298245a7bc5"/> | <img width="300"  src="https://github.com/kijiwon/project-number_baseball/assets/119961147/a3a74f4f-3c66-4f3f-86ab-3d112a52c903"> <img height="300" alt="스크린샷 2024-01-03 오후 5 29 48" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/fbe732ce-1543-4224-a3ab-4afc61ca669d">| <img width="300" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/34a15a58-5688-4d05-b5ec-fe5dc2d4b694"> | <img width="300" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/bea35b29-cb68-4c6b-bace-b6cdae94c432"> | <img width="300" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/fc790a45-a39f-436f-8e70-a82393c8c513"> |
+| <img  width="400" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/5343d052-9542-4d61-b6a7-e298245a7bc5"/> | <img width="400" alt="게임 페이지(데스크탑)" src="https://github.com/user-attachments/assets/81f9f74c-e8f9-44b8-a74b-6bdcd1a6e824"> <img width="300" alt="게임 페이지(모바일)" src="https://github.com/user-attachments/assets/f342c9ee-ad8e-462e-823c-2fefef680b93">| <img width="400" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/34a15a58-5688-4d05-b5ec-fe5dc2d4b694"> | <img width="400" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/bea35b29-cb68-4c6b-bace-b6cdae94c432"> | <img width="400" src="https://github.com/kijiwon/project-number_baseball/assets/119961147/fc790a45-a39f-436f-8e70-a82393c8c513"> |
 
 |  회원가입 페이지  |  로그인 페이지  |  랭킹 페이지 |
 | :----------: | :----------: | :----------: |
-|  <img width="400" alt="스크린샷 2024-11-07 오후 3 56 15" src="https://github.com/user-attachments/assets/b70ce9c4-d298-44dd-b56a-f8adab254614">| <img width="400" alt="스크린샷 2024-11-07 오후 3 59 17" src="https://github.com/user-attachments/assets/3e815932-8711-4c52-9fa2-1dcbe0e01ece">| <img width="400" alt="스크린샷 2024-11-07 오후 3 59 25" src="https://github.com/user-attachments/assets/fa91238a-9cee-4b45-b1ca-6b18bec3dc1b">|
+|  <img width="400" alt="회원가입 페이지" src="https://github.com/user-attachments/assets/b70ce9c4-d298-44dd-b56a-f8adab254614">| <img width="400" alt="로그인 페이지" src="https://github.com/user-attachments/assets/3e815932-8711-4c52-9fa2-1dcbe0e01ece">| <img width="400" alt="랭킹 페이지" src="https://github.com/user-attachments/assets/fa91238a-9cee-4b45-b1ca-6b18bec3dc1b">|
