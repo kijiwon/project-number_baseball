@@ -9,7 +9,8 @@ import {
   RandomNumberContextType,
   ResultContextType,
 } from '../../types/type';
-import { getDatabase, ref, set } from 'firebase/database';
+import { ref, set } from 'firebase/database';
+import { database } from '../firebase';
 import { useEffect } from 'react';
 
 const GameOverScreen = styled.div`
@@ -134,7 +135,6 @@ const GameOver = () => {
   const user = JSON.parse(localStorage.getItem('user') as string);
 
   useEffect(() => {
-    const database = getDatabase();
     set(ref(database, 'score_board/' + user.uid), {
       userId: user.uid,
       userName: user.displayName,
