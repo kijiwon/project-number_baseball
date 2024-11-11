@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { onValue, ref } from 'firebase/database';
+import { database } from '../firebase';
 import { ScoreDataType } from '../../types/type';
 import { IoArrowBack } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
@@ -87,7 +88,6 @@ const Ranking = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const database = getDatabase();
     const scoreRef = ref(database, 'score_board');
     onValue(scoreRef, (snapshot) => {
       const data = snapshot.val();
